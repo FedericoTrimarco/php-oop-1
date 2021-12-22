@@ -19,19 +19,36 @@ metodi d’istanza che abbiamo visto stamattina e create un file index.php in cu
             $this->starActor = $starActor;
             $this->year = $year;
         }
+        
+        // controllo se il film è ancora in programmazione
+        public function setYear() {
+            if($this->year == date('Y')){
+                return "<h2>In programmazione</h2>";
+            } else if($this->year < date('Y')){
+                return "<h2>Non più in programmazione</h2>";
+            } else{
+                return "<h2>Non ancora in programmazione</h2>";
+            }
+        }
 
     };
 
-    $movie1 = new Movie('Spider-Man', 'Sam Raimi', 'Tobey Maguire', 2002 );
+    $movie1 = new Movie('Spider-Man', 'Sam Raimi', 'Tobey Maguire', 2002);
     var_dump($movie1);
 
+    echo $movie1->setYear();
+
     echo '<hr>';
 
-    $movie2 = new Movie('Hurricane', 'Norman Jewison', 'Denzel Washington', 1999 );
+    $movie2 = new Movie('100 Years', 'Robert Rodriguez', 'John Malkovich', 2115);
     var_dump($movie2);
 
+    echo $movie2->setYear();
+
     echo '<hr>';
 
-    $movie3 = new Movie('Spider-Man: No Way Home', 'Jon Watts', 'Tom Holland', 2021 );
+    $movie3 = new Movie('Spider-Man: No Way Home', 'Jon Watts', 'Tom Holland', 2021);
     var_dump($movie3);
+
+    echo $movie3->setYear();
 ?>
